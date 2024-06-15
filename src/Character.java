@@ -22,7 +22,6 @@ public class Character extends JComponent {
         this.sizeHight = sizeHight;
         this.x=x;
         this.y=y;
-        
         this.timePartInFalling=0;
         this.moveRightIncremet=0;
         this.moveUpIncremet=0;

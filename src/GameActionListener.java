@@ -2,7 +2,6 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class GameActionListener implements MouseListener, MouseMotionListener, KeyListener {
-    //public boolean lunchBird= false;
     private int xLocationRealsedBird;//=Constans.SLING_SHOT_LOCATION_X+Constans.SLING_SHOT_WIDTH/2 - Constans.WIDTH_CHARACTER/2;
     private int yLocationRealsedBird;//=Constans.WINDOW_HIGHT-(Constans.SLING_SHOT_HIGHT+Constans.HIGHT_CHARACTER);
     private int xPulsPlusAmt=0; // incriment for x+= amount
@@ -81,6 +80,19 @@ public class GameActionListener implements MouseListener, MouseMotionListener, K
         }
     }
 
+
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_B  ){
+            if(this.currBird!=null){
+                this.currBird.setBomb();
+                this.currBird.putImageOnCharcter(Constans.BIRD_BOMB_IMAGE_PATH);
+
+            }
+        }
+
+    }
+
+
     public void mouseMoved(MouseEvent e) {
 
     }
@@ -98,24 +110,6 @@ public class GameActionListener implements MouseListener, MouseMotionListener, K
     }
 
     public void keyTyped(KeyEvent e) {
-        String currKey=String.valueOf(e.getKeyChar()).toUpperCase();
-        if(currKey.equals("R")  ){
-            System.out.println("pressed refresh");
-
-
-        }
-        else if(currKey.equals("B")  ){
-            System.out.println("pressed bomb");
-            if(this.currBird!=null){
-                this.currBird.setBomb();
-                this.currBird.putImageOnCharcter("resources/angryBirdsBomberBird_transperent.png");
-                System.out.println("changed pic");
-            }
-        }
-
-    }
-
-    public void keyPressed(KeyEvent e) {
 
     }
 

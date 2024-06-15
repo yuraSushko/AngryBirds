@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 
 public class Constans {
@@ -8,10 +9,21 @@ public class Constans {
     public static final int HIGHT_CHARACTER=30;
     public static final int WIDTH_CHARACTER=30;//20
     public static final String PIG_IMAGE_PATH="resources/angryBirdsPigPic_transperent.png";
+
     public static final String BIRD_REGULAR_IMAGE_PATH="resources/angryBirdsMainBirdPic_transperent.png";
 
 
     public static final String MAIN_SCENE_BACK_IMG="resources/angryBirdsGrassImages.png";
+
+    public static final String TERREIN_GRASS_IMAGE="resources/grassNew_transperent.png";
+    public static final String TERREIN_VERTIACL_LOG_IMAGE="resources/vertical_log.jpg";
+    public static final String TERREIN_HORISONTAL_LOG_IMAGE="resources/horisontal_log.jpg";
+
+
+    public static final String BACKGROUND_MUSIC_PATH="src/resources/AngryBirds-ThemeSong.wav";
+    public static final String COLLISION_SOUND_PATH="src/resources/bird-impact-sound.wav";
+    public static final String STERCH_SLING_SOUND_PATH="src/resources/Angry_Birds_Slingshot_Stretched_Sound_Effect.wav";
+
 
 
 

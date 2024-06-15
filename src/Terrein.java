@@ -14,15 +14,17 @@ public class Terrein  extends JComponent {
     private BufferedImage grassImg;
     private BufferedImage horisonalLog;
     private BufferedImage verticlLog;
-    public Terrein() throws IOException {
+    public Terrein() /*throws IOException*/ {
         this.pillers = new ArrayList<>();
         this.slingshot = new ArrayList<>();
-        grassImg = ImageIO.read(getClass().getResource("resources/grassNew_transperent.png"));
-        verticlLog = ImageIO.read(getClass().getResource("resources/vertical log .jpg"));
-        //verticlLog = ImageIO.read(getClass().getResource("resources/Toons_Stone_Block-removebg-preview.png"));
 
-        horisonalLog = ImageIO.read(getClass().getResource("resources/horisontal log.jpg"));
-
+        try {
+        grassImg = ImageIO.read(getClass().getResource(Constans.TERREIN_GRASS_IMAGE));
+        verticlLog = ImageIO.read(getClass().getResource(Constans.TERREIN_VERTIACL_LOG_IMAGE));
+        horisonalLog = ImageIO.read(getClass().getResource(Constans.TERREIN_HORISONTAL_LOG_IMAGE));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
     void deleteAllPillers(){
         this.pillers.clear();
@@ -132,8 +134,8 @@ public class Terrein  extends JComponent {
 
     void printPiller(Graphics g){
         g.setColor(Color.ORANGE);
+
         for(Rectangle piller : pillers){
-            g.fillRect(piller.x, piller.y, piller.width,piller.height);
             g.drawImage(verticlLog,piller.x, piller.y, piller.width, piller.height,this);
 
         }
