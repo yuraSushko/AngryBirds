@@ -54,12 +54,30 @@ public class Character extends JComponent {
         this.moveRightIncremet = moveRightIncremet;
     }
 
+
+   /* public boolean onRestBench() {
+        boolean onRestBench=true;
+        if(this.x> Constans.REST_BENCH_WIDTH && this.y<Constans.REST_BENCH_HIGHT) {
+            onRestBench = true;
+        }
+        return onRestBench;
+    }
+    public boolean afterSlingshot(){
+        boolean after = false;
+        if(this.x>Constans.SLING_SHOT_LOCATION_X+Constans.SLING_SHOT_WIDTH){
+            after=true;
+        }
+        return after;
+    }*/
+
     void gravity(){
 
         if(this.x>Constans.SLING_SHOT_LOCATION_X+Constans.SLING_SHOT_WIDTH){
+
             if( !collisionWithBottom()){
                 if(!collisionWithPiller()) {
-                    this.y += 0.2 * timePartInFalling;
+                    //this.y += 0.2 * timePartInFalling;
+                    this.y += Constans.GRAVITY_AMPLIFIER * timePartInFalling;
                     timePartInFalling++;
                 }else{timePartInFalling=0;}
             }

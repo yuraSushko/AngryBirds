@@ -39,6 +39,33 @@ public class InstructionsPanel  extends JPanel {
 
         }
 
+    private String  instructionsSring(){
+        String instuctions=
+                "<html>Once you click play your game begins,<br>take a bird from the rest bench on the" +
+                        "top right by clicking on it, it will pop onto the slingshot" +
+                        "<br>Now you can drag your bird and try to hit pigs." +
+                        "<br>If that stage seems a bit too hard you can press \\\"B\\\" on your keyboard and your chosen bird will turn into a bomb that can break the piller it hits and get 5 points for the pig on it." +
+                        "<br>If a pig is hit by a bird it's worth 10 points." +
+                        "<br> If you run out of birds you pay 20 points" +
+                        "<br>If your points get below 0 you lose." +
+                        "<br>By clicking play again or exit your game will restart." +
+                        "</html>"
+
+                ;
+             //   "Once you click play your game begins,\n take a bird from the rest bench on the";
+                /* top right by clicking on it, it will pop onto the slingshot.\n
+                Now you can drag your bird and try to hit pigs.
+                If that stage seems a bit too hard you can press \"B\" on your keyboard and your chosen bird will turn into a bomb that can break the piller it hits and get 5 points for the pig on it.\n
+                If a pig is hit by a bird it's worth 10 points.\n
+                If you run out of birds you pay 20 points.\n
+                If your points get below 0 you lose.\n
+                By clicking play again or exit your game will restart. "*/;
+    return instuctions;
+
+
+
+
+    }
 
 
 }

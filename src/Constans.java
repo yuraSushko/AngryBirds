@@ -6,8 +6,10 @@ public class Constans {
     public static final int WINDOW_HIGHT=600;
     public static final int WINDOW_INSET=37;
     public static final int NUMBER_OF_BIRDS=4;
-    public static final int HIGHT_CHARACTER=30;
-    public static final int WIDTH_CHARACTER=30;//20
+    public static final int HIGHT_CHARACTER=40;//30
+    public static final int WIDTH_CHARACTER=40;//30
+    public static final double GRAVITY_AMPLIFIER = 0.25;
+    public static final int MAIN_LOOP_SLEEP = 20;
     public static final String PIG_IMAGE_PATH="resources/angryBirdsPigPic_transperent.png";
 
     public static final String BIRD_REGULAR_IMAGE_PATH="resources/angryBirdsMainBirdPic_transperent.png";

@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
 
 public class MainScene extends JPanel {
 
@@ -19,7 +17,7 @@ public class MainScene extends JPanel {
         createExitButton();
         initializeTerrein();
         this.backroundMainGame = new ImageIcon(Objects.requireNonNull(getClass().getResource(Constans.MAIN_SCENE_BACK_IMG))).getImage();
-        addLitner();
+        addListner();
         createScoreLabel();
         this.collisionSound=new Music(Constans.COLLISION_SOUND_PATH);
         this.strechSlingShotSound=new Music(Constans.STERCH_SLING_SOUND_PATH);
@@ -30,8 +28,6 @@ public class MainScene extends JPanel {
         super.paintComponent(g);
         g.drawImage(this.backroundMainGame,0,0,Constans.WINDOW_WIDTH,Constans.WINDOW_HIGHT,this);
         try {
-
-
         for(Character c : this.pigs) {
             c.drawCharacter(g );
         }
@@ -56,7 +52,7 @@ public class MainScene extends JPanel {
     }
 
 
-    private void addLitner(){
+    private void addListner(){
         this.gameActionListener = new GameActionListener();
         gameActionListener.setBirdsList(this.birds);
         this.addMouseListener(gameActionListener);
@@ -74,14 +70,27 @@ public class MainScene extends JPanel {
         this.add(this.scoreLabel);
     }
     private void updateScore(int amount) {
-        if(this.score + amount <0){
-            this.score=0;
-        }
-        else{this.score+=amount;}
-
+        this.score+=amount;
         this.scoreLabel.setText("SCORE: " + this.score);
         this.scoreLabel.repaint();
     }
+
+    private void createLostButton(){
+        this.lost =new JButton(Constans.LOST_BUTTON_TEXT);
+        lost.setBounds(Constans.LOST_BUTTON_X
+                ,Constans.LOST_BUTTON_Y
+                ,Constans.LOST_BUTTON_WIDTH
+                ,Constans.LOST_BUTTON_HIGHT);
+        lost.setFont(new Font(Constans.LOST_BUTTON_TEXT, Constans.EXIT_BUTTON_FONT, Constans.EXIT_BUTTON_FONT_SIZE));
+        lost.setContentAreaFilled(false);
+        lost.setBorderPainted(false);
+        //lost.setFocusable(false);
+        this.lost.addActionListener(gameActionListener);
+        this.add(this.lost);
+
+    }
+
+
     private void initializeTerrein(){
         terrein = new Terrein();
         terrein.randomTerreain();
@@ -108,6 +117,15 @@ public class MainScene extends JPanel {
         return this.exit;
     }
 
+    private void restartGame(){
+        this.score=0;
+        this.scoreLabel.setText("SCORE : "+ this.score);
+        this.gameActionListener.removeOneBird(this.gameActionListener.getCurrBird());
+        this.birds.clear();
+        restokBirds();
+        this.pigs.clear();
+        refreshPillersAndPigs();
+    }
 
 
     void mainGameLoop() {
@@ -118,39 +136,28 @@ public class MainScene extends JPanel {
                     ArrayList<Character> pigsToRemove= new ArrayList<>();
                     while (true) {
                         if (Window.latestClickedButton.equals(Constans.EXIT_BUTTON_TEXT)){
-                            this.score=0;
-                            this.scoreLabel.setText("SCORE : "+ this.score);
-                            this.gameActionListener.removeOneBird(this.gameActionListener.getCurrBird());
-                            this.birds.clear();
-                            restokBirds();
-                            this.pigs.clear();
-                            refreshPillersAndPigs();
-
+                            restartGame();
 
                         }
 
-                        for (Character c : this.pigs  )  {
-                            for( Character birdCol : this.birds) {
-                                boolean shotDown = c.getCharacterAsRectangle().intersects(birdCol.getCharacterAsRectangle());
+                        for (Character pig : this.pigs  )  {
+                            for( Character bird : this.birds) {
+                                boolean shotDown = pig.getCharacterAsRectangle().intersects(bird.getCharacterAsRectangle());
                                 if(shotDown ){
                                     collisionSound.play();
-                                    pigsToRemove.add(c);
-                                    if(pigs.size()>1) {
-                                        updateScore(20);
-                                    }
-                                    else {updateScore(10);}
-
+                                    pigsToRemove.add(pig);
+                                    updateScore(10);
                                 }
                             }
 
-                            boolean fell = c.collisionWithBottom();
+                            boolean fell = pig.collisionWithBottom();
                             if(fell){
                                 collisionSound.play();
-                                pigsToRemove.add(c);
+                                pigsToRemove.add(pig);
                                 updateScore(5);
                             }
 
-                            c.gravity();
+                            pig.gravity();
                         }
                         for( Character b : this.birds){
                             b.gravity();
@@ -167,8 +174,8 @@ public class MainScene extends JPanel {
                         }
                         birdToRemove=null;pigsToRemove.clear();
                         if(this.birds.size()==0){
+                            updateScore(-20);
                             restokBirds();
-
                         }
                         if(this.pigs.size()==0){
                             birdToRemove=gameActionListener.getCurrBird();
@@ -176,9 +183,25 @@ public class MainScene extends JPanel {
                             this.birds.remove(birdToRemove);
                             birdToRemove=null;
                             refreshPillersAndPigs();
-
                         }
-                        Thread.sleep(20);
+
+                        if(this.score<0){
+                            createLostButton();
+                            this.birds.clear();
+                            this.terrein.deleteAllPillers();
+                            this.pigs.clear();
+                            while(!clikedRestart){
+                                Thread.sleep(Constans.MAIN_LOOP_SLEEP);
+                                if(Window.latestClickedButton.equals(Constans.EXIT_BUTTON_TEXT)){break;}
+                            }
+                            if(clikedRestart || Window.latestClickedButton.equals(Constans.EXIT_BUTTON_TEXT) ) {
+                                restartGame();
+                                lost.setVisible(false);
+                                clikedRestart = false;
+                            }
+                        }
+
+                        Thread.sleep(Constans.MAIN_LOOP_SLEEP);
                     }
                 } catch (Exception e) {throw new RuntimeException(e);}
             }).start();
@@ -203,7 +226,7 @@ public class MainScene extends JPanel {
         for (int i = 0; i <Constans.NUMBER_OF_BIRDS; i++) {
             birds.add(new Character(Constans.WIDTH_CHARACTER,
                     Constans.HIGHT_CHARACTER,
-                    (int) (i*Constans.HIGHT_CHARACTER *1.2 ),// BUFFER
+                    (int) (i*Constans.HIGHT_CHARACTER *1.1 ),// BUFFER
                                 0,Constans.BIRD_REGULAR_IMAGE_PATH));
 
         }
@@ -219,5 +242,4 @@ public class MainScene extends JPanel {
                     );
         }
     }
-
 }

@@ -1,7 +1,8 @@
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class GameActionListener implements MouseListener, MouseMotionListener, KeyListener {
+public class GameActionListener implements MouseListener, MouseMotionListener, ActionListener, KeyListener {
     private int xLocationRealsedBird;//=Constans.SLING_SHOT_LOCATION_X+Constans.SLING_SHOT_WIDTH/2 - Constans.WIDTH_CHARACTER/2;
     private int yLocationRealsedBird;//=Constans.WINDOW_HIGHT-(Constans.SLING_SHOT_HIGHT+Constans.HIGHT_CHARACTER);
     private int xPulsPlusAmt=0; // incriment for x+= amount
@@ -83,8 +84,9 @@ public class GameActionListener implements MouseListener, MouseMotionListener, K
 
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_B  ){
-            if(this.currBird!=null){
+            if(this.currBird!=null && !this.currBird.isBomb()){
                 this.currBird.setBomb();
+
                 this.currBird.putImageOnCharcter(Constans.BIRD_BOMB_IMAGE_PATH);
 
             }
@@ -105,8 +107,15 @@ public class GameActionListener implements MouseListener, MouseMotionListener, K
 
     }
 
-    public void mouseClicked(MouseEvent e) {
 
+    public void actionPerformed(ActionEvent e) {
+        JButton b =((JButton) e.getSource());
+        if (b.getText().equals(Constans.LOST_BUTTON_TEXT)) {
+            MainScene.clikedRestart = true;
+        }
+
+    }
+    public void mouseClicked(MouseEvent e) {
     }
 
     public void keyTyped(KeyEvent e) {
@@ -116,4 +125,6 @@ public class GameActionListener implements MouseListener, MouseMotionListener, K
     public void keyReleased(KeyEvent e) {
 
     }
+
+
 }
