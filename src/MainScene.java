@@ -11,7 +11,15 @@ public class MainScene extends JPanel {
     private GameActionListener gameActionListener;
     private Image backroundMainGame;
     private JButton exit;
-    public MainScene (int x, int y, int width, int height) throws IOException {
+    private JButton lost;
+    private JLabel scoreLabel;
+    private int score;
+    private Music collisionSound;
+    private Music strechSlingShotSound;
+    public static boolean clikedRestart;
+
+
+    public MainScene (int x, int y, int width, int height) {
         setBounds(x, y, width, height);
         this.setLayout(null);
         createExitButton();
@@ -61,11 +69,11 @@ public class MainScene extends JPanel {
 
     }
     public void createScoreLabel(){
-        this.scoreLabel= new JLabel(" SCORE : 0" );
+        this.scoreLabel= new JLabel(Constans.SCORE_LABEL_TEXT );
         this.scoreLabel.setVisible(true);
-        this.scoreLabel.setBounds(600, 0, 150, 30);
-        this.scoreLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        this.scoreLabel.setForeground(Color.black);
+        this.scoreLabel.setBounds(Constans.SCORE_LABEL_X, Constans.SCORE_LABEL_Y, Constans.SCORE_LABEL_WIDTH, Constans.SCORE_LABEL_HIGHT);
+        this.scoreLabel.setFont(new Font(Constans.SCORE_LABEL_FONT_NAME,Constans.SCORE_LABEL_FONT, Constans.SCORE_LABEL_FONT_SIZE));
+        this.scoreLabel.setForeground(Constans.SCORE_LABEL_COLOR);
         this.add(scoreLabel);
         this.add(this.scoreLabel);
     }
@@ -106,7 +114,7 @@ public class MainScene extends JPanel {
                 ,Constans.EXIT_BUTTON_Y
                 ,Constans.EXIT_BUTTON_WIDTH
                 ,Constans.EXIT_BUTTON_HIGHT);
-        exit.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        exit.setFont(new Font(Constans.EXIT_BUTTON_TEXT_FONT_NAME, Constans.EXIT_BUTTON_FONT, Constans.EXIT_BUTTON_FONT_SIZE));
         exit.setContentAreaFilled(false);
         exit.setBorderPainted(false);
         exit.setFocusable(false);
@@ -159,6 +167,7 @@ public class MainScene extends JPanel {
 
                             pig.gravity();
                         }
+
                         for( Character b : this.birds){
                             b.gravity();
                             b.moveUp(b.getMoveUpIncremet());

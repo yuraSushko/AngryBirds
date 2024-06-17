@@ -13,8 +13,9 @@ public class Constans {
     public static final String PIG_IMAGE_PATH="resources/angryBirdsPigPic_transperent.png";
 
     public static final String BIRD_REGULAR_IMAGE_PATH="resources/angryBirdsMainBirdPic_transperent.png";
-
-
+    public static final String BIRD_BOMB_IMAGE_PATH="resources/angryBirdsBomberBird_transperent.png";
+    public static final String BACKROUND_OPENING_IMAGE_PATH="resources/angryBirdsOpeneing.jpg";
+    public static final String BACKROUND_INSTRUCTIONS_IMAGE_PATH="resources/angryBirdsInstructions.png";
     public static final String MAIN_SCENE_BACK_IMG="resources/angryBirdsGrassImages.png";
 
     public static final String TERREIN_GRASS_IMAGE="resources/grassNew_transperent.png";
@@ -49,7 +50,17 @@ public class Constans {
     public static final int REST_BENCH_HIGHT=Constans.HIGHT_CHARACTER/2;
 
     public static final String PLAY_BUTTON_TEXT ="play";
+    public static final String PLAY_BUTTON_TEXT_FONT ="Algerian";
+    public static final int PLAY_BUTTON_FONT_SIZE=50;
+
+
+
+
+
+
     public static final String INSTRUCTIONS_BUTTON_TEXT="instructions";
+    public static final String INSTRUCTIONS_BUTTON_FONT="Algerian";
+    public static final int INSTRUCTIONS_BUTTON_FONT_SIZE=40;
     public static final String EXIT_BUTTON_TEXT="exit";
     public static final int OPENINIG_SCREEN_PLAY_BUTTON_X=250;
     public static final int OPENINIG_SCREEN_PLAY_BUTTON_Y=150;
@@ -61,6 +72,45 @@ public class Constans {
     public static final int EXIT_BUTTON_Y=0;
     public static final int EXIT_BUTTON_WIDTH=75;
     public static final int EXIT_BUTTON_HIGHT=30;
-    }
+    public static final String LOST_BUTTON_TEXT="you lost\ntry again";
+    public static final int LOST_BUTTON_X=WINDOW_WIDTH/2 - 200;
+    public static final int LOST_BUTTON_Y=WINDOW_HIGHT/2 - 200;
+    public static final int LOST_BUTTON_WIDTH=200;
+    public static final int LOST_BUTTON_HIGHT=200;
+
+    public static final String EXIT_BUTTON_TEXT_FONT_NAME ="Tahoma";
+    public static final int EXIT_BUTTON_FONT=Font.BOLD;
+    public static final int EXIT_BUTTON_FONT_SIZE=20;
+
+
+
+    public static final String SCORE_LABEL_TEXT="SCORE : 0 ";
+    public static final int SCORE_LABEL_X=600;
+    public static final int SCORE_LABEL_Y=0;
+    public static final int SCORE_LABEL_WIDTH=150;
+    public static final int SCORE_LABEL_HIGHT=30;
+    public static final String SCORE_LABEL_FONT_NAME="Arial";
+    public static final int SCORE_LABEL_FONT=Font.BOLD;
+    public static final int SCORE_LABEL_FONT_SIZE=20;
+    public static final Color SCORE_LABEL_COLOR=Color.black;
+
+
+    public static final int INSTRUCTIONS_LABEL_X=50;
+    public static final int INSTRUCTIONS_LABEL_Y=0;
+    public static final int INSTRUCTIONS_LABEL_WIDTH=700;
+    public static final int INSTRUCTIONS_LABEL_HIGHT=500 ;
+    public static final String INSTRUCTIONS_LABEL_FONT_NAME="Tahoma";
+    public static final int INSTRUCTIONS_LABEL_FONT=Font.PLAIN;
+    public static final int INSTRUCTIONS_LABEL_FONT_SIZE=25;
+    public static final Color INSTRUCTIONS_LABEL_COLOR=Color.black;
+
+
+
+
+
+
+
+
+}
 
 
