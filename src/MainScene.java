@@ -89,7 +89,7 @@ public class MainScene extends JPanel {
                 ,Constans.LOST_BUTTON_Y
                 ,Constans.LOST_BUTTON_WIDTH
                 ,Constans.LOST_BUTTON_HIGHT);
-        lost.setFont(new Font(Constans.LOST_BUTTON_TEXT, Constans.EXIT_BUTTON_FONT, Constans.EXIT_BUTTON_FONT_SIZE));
+        lost.setFont(new Font(Constans.LOST_BUTTON_TEXT, Constans.EXIT_BUTTON_FONT, Constans.LOST_BUTTON_FONT_SIZE));
         lost.setContentAreaFilled(false);
         lost.setBorderPainted(false);
         //lost.setFocusable(false);

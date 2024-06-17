@@ -14,7 +14,7 @@ public class Constans {
 
     public static final String BIRD_REGULAR_IMAGE_PATH="resources/angryBirdsMainBirdPic_transperent.png";
     public static final String BIRD_BOMB_IMAGE_PATH="resources/angryBirdsBomberBird_transperent.png";
-    public static final String BACKROUND_OPENING_IMAGE_PATH="resources/angryBirdsOpeneing.jpg";
+    public static final String BACKROUND_OPENING_IMAGE_PATH= "resources/angryBirdsStartPage.png" ;//"resources/angryBirdsOpeneing.jpg";
     public static final String BACKROUND_INSTRUCTIONS_IMAGE_PATH="resources/angryBirdsInstructions.png";
     public static final String MAIN_SCENE_BACK_IMG="resources/angryBirdsGrassImages.png";
 
@@ -63,21 +63,21 @@ public class Constans {
     public static final int INSTRUCTIONS_BUTTON_FONT_SIZE=40;
     public static final String EXIT_BUTTON_TEXT="exit";
     public static final int OPENINIG_SCREEN_PLAY_BUTTON_X=250;
-    public static final int OPENINIG_SCREEN_PLAY_BUTTON_Y=150;
+    public static final int OPENINIG_SCREEN_PLAY_BUTTON_Y=200;
     public static final int OPENINIG_SCREEN_INSTRUCTIONS_BUTTON_X=250;
-    public static final int OPENINIG_SCREEN_INSTRUCTIONS_BUTTON_Y=300;
+    public static final int OPENINIG_SCREEN_INSTRUCTIONS_BUTTON_Y=330;
     public static final int OPENINIG_SCREEN_BOTH_BUTTON_WIDTH=300;
     public static final int OPENINIG_SCREEN_BOTH_BUTTON_HIGHT=100;
     public static final int EXIT_BUTTON_X=725;
     public static final int EXIT_BUTTON_Y=0;
     public static final int EXIT_BUTTON_WIDTH=75;
     public static final int EXIT_BUTTON_HIGHT=30;
-    public static final String LOST_BUTTON_TEXT="you lost\ntry again";
-    public static final int LOST_BUTTON_X=WINDOW_WIDTH/2 - 200;
-    public static final int LOST_BUTTON_Y=WINDOW_HIGHT/2 - 200;
-    public static final int LOST_BUTTON_WIDTH=200;
-    public static final int LOST_BUTTON_HIGHT=200;
-
+    public static final String LOST_BUTTON_TEXT="<html>you lost<br> try again</html>";
+    public static final int LOST_BUTTON_X=WINDOW_WIDTH/2 - 150;
+    public static final int LOST_BUTTON_Y=WINDOW_HIGHT/2 - 150;
+    public static final int LOST_BUTTON_WIDTH=300;
+    public static final int LOST_BUTTON_HIGHT=300;
+    public static final int LOST_BUTTON_FONT_SIZE=40;
     public static final String EXIT_BUTTON_TEXT_FONT_NAME ="Tahoma";
     public static final int EXIT_BUTTON_FONT=Font.BOLD;
     public static final int EXIT_BUTTON_FONT_SIZE=20;
@@ -100,7 +100,7 @@ public class Constans {
     public static final int INSTRUCTIONS_LABEL_WIDTH=700;
     public static final int INSTRUCTIONS_LABEL_HIGHT=500 ;
     public static final String INSTRUCTIONS_LABEL_FONT_NAME="Tahoma";
-    public static final int INSTRUCTIONS_LABEL_FONT=Font.PLAIN;
+    public static final int INSTRUCTIONS_LABEL_FONT=Font.BOLD;
     public static final int INSTRUCTIONS_LABEL_FONT_SIZE=25;
     public static final Color INSTRUCTIONS_LABEL_COLOR=Color.black;
 

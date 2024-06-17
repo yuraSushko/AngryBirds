@@ -52,13 +52,13 @@ public class InstructionsPanel  extends JPanel {
 
     private String  instructionsSring(){
         String instuctions=
-                "<html>Once you click play your game begins,<br>take a bird from the rest bench on the" +
-                        "top right by clicking on it, it will pop onto the slingshot" +
+                "<html>take a bird from the rest bench on the top right by clicking on it," +
+                        " it will pop onto the slingshot." +
                         "<br>Now you can drag your bird and try to hit pigs." +
                         "<br>If that stage seems a bit too hard you can press 'B' on your keyboard and your chosen bird will turn into a bomb that can break the piller it hits and get 5 points for the pig on it." +
-                        "<br>If a pig is hit by a bird it's worth 10 points." +
-                        "<br> If you run out of birds you pay 20 points" +
-                        "<br>If your points get below 0 you lose." +
+                        "<br>If a pig is hit by a bird it's:<br>10 points you get." +
+                        "<br> If you run out of birds:<br>you pay 20 points" +
+                        "<br>If your points get below 0:<br>you lose." +
                         "<br>By clicking play again or exit your game will restart." +
                         "</html>"
 
